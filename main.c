@@ -2,20 +2,32 @@
 // Credits: JORGERAYMASON
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include "story.c"
 #include "ASCII.c"
 
 // Function prototype declarations
 
-void saveGame(); // Function that saves the game
+void exitGame();
 
-void loadGame(); // Function that loads the game
+void chapterSelect();
 
-void exitGame(); // Exits the game when called
+int makeChoice(); 
 
-void introScene(); // Intro scene that starts the game
+void waitForInput();
 
-void chapter1ReptillianAuthority(); // Calls for the content of chapter one
+void introScene();
+
+void chapter1ReptillianAuthority();
+
+void chapter2HighStakes();
+
+void chapter3TechnicalDifficulties();
+
+void chapter4DivineSolance();
+
 
 // Main function, contains the main menu
 int main()
@@ -62,27 +74,26 @@ void waitForInput()
 
     char userInput = getchar();
 
-    if (userInput == 'Q')
+    if (userInput == 'Q'|| userInput == 'q')
     {
         main();
     }
 }
 
-void saveGame()
-{
-    // Save currentLine value
-}
+// Called every time user has to make a choice for a decistion in the story.
+int makeChoice(){
+    int option = 0;
 
-// Loads game progress
-void loadGame()
-{
-    // Retrieve saved index
-    // currentLine = savedValue;
+    printf("What do you choose?");
+    scanf("%d", &option);
+    
+    return option;
 }
 
 // Exits the game
 void exitGame(){
     printf("Exiting Game...");
+    exit(0);
 }
 
 // Allows user to select chapter to start from, or revisit
@@ -98,7 +109,6 @@ void chapterSelect(){
 
     scanf("%d", &input);
 
-    /*
     switch (input)
     {
     case 1:
@@ -113,17 +123,9 @@ void chapterSelect(){
     case 4:
         chapter4DivineSolance();
         break;
-    
-    
     default:
         break;
     }
-    */
-
-   if (input == 1 || input == 2 || input == 3 || input == 4)
-   {
-    printf("You picked chapter: %d", input);
-   }
 }
 
 //Intro scene that starts game.
@@ -168,79 +170,54 @@ void chapter1ReptillianAuthority()
 
     printf("%s", asciiNewt);
 
-    int currentLine = 0;
-
-    // Print story
-    while(currentLine < 188) {
-        printf("%s\n", chapter1_story_text[currentLine]);
+    for (int i = 0; i < chapter1_story_text; i++)
+    {
+        printf(chapter1_story_text[i]);
 
         waitForInput();
 
-        currentLine++;
+        i++;
+    
+        if (i == 23)
+        {
+            int choice = makeChoice();
+            int isChoiceActive = 0;
 
-        // Check for choice point
-        if(currentLine == 9) {
-
-        //char choices[] = {"Bill: That’s tragic, truly. Defying the creed was a major mistake on their end.", "Bill: Idiots! They should have never done that. I'ld laugh in their face", "Bill: Eh. Couldn't have been me.",};
-
-        int choice = 0;
-        char* opt1 = chapter1_story_text[10];
-        char* opt2 = chapter1_story_text[11];
-        char* opt3 = chapter1_story_text[12];
-
-        printf("What do you say to Jason?\n1.%s\n2.%s\n3.%s", opt1, opt2, opt3);
-        scanf("%d\n", &choice);
-        
-            if(choice == 1) { 
-                currentLine = 13; // Branch storyline  
+            printf("1.%s\n2.%s3.\n%s", chapter1_story_text[25], chapter1_story_text[27], chapter1_story_text[29]);
+            if (choice == 1)
+            {
+                printf(chapter1_story_text[31]);
             }
-            else if (choice == 2) {
-                currentLine = 14; 
+            else if (choice == 2)
+            {
+                printf(chapter1_story_text[33]);
             }
-            else if (choice == 3){
-                currentLine = 15;
-            }
-            else{
-                printf("Invalid input");
+            else if (choice == 2)
+            {
+                printf(chapter1_story_text[33]);
             }
         }
-        else {
+        else
+        {
+            printf(chapter1_story_text[i]);
 
-        // Print next line
-        printf("%s\n", chapter1_story_text[currentLine]);
-        currentLine++;
+            waitForInput();
+
+            i++;
         }
     }
-
 }
 
-//2nd Chapter. Gambeler, no good uncle, Ricchi Ippatsu
-void chapter2HighStakes(){
-
+void chapter2HighStakes() {
+   // Code
+   printf("Hi");
 }
 
-//3rd Chapter. The robotic and monotone, Takahashi.
-void chapter3TechnicalDifficulties(){
-
+void chapter3TechnicalDifficulties() {
+   // Code
+   printf("Hi");
 }
 
-// 4th Chapter. The legend of the etheral Kora Gray
-void chapter4DivineSolance()
-{
-    // Story text split across lines in an array
-
-    printf("**Chapter 4: Divine Solace**\n**********************************\n\n");
-
-    printf("%s", asciiKora);
-
-    int currentLine = 0;
-
-    // Print story
-    while(currentLine < 188) {
-        printf("%s\n", chapter4_story_text[currentLine]);
-
-        waitForInput();
-
-        currentLine++;
-    }
+void chapter4DivineSolance() {
+    printf("Hi");
 }
