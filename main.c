@@ -170,36 +170,46 @@ void chapter1ReptillianAuthority()
 
     printf("%s", asciiNewt);
 
-    for (int i = 0; i < chapter1_story_text; i++)
+    int textSize =  sizeof(chapter1StoryText) / sizeof(chapter1StoryText[0]);
+
+    for (int i = 0; i <= textSize; i++)
     {
-        printf(chapter1_story_text[i]);
+        printf("%s", chapter1StoryText[i]);
 
         waitForInput();
 
         i++;
     
-        if (i == 23)
+        if (i == 10)
         {
-            int choice = makeChoice();
-            int isChoiceActive = 0;
+            int choice = 0;
 
-            printf("1.%s\n2.%s3.\n%s", chapter1_story_text[25], chapter1_story_text[27], chapter1_story_text[29]);
+            printf("1.%s\n2.%s\n3. %s", chapter1StoryText[9], chapter1StoryText[10], chapter1StoryText[11]);
+
+            scanf("%d", &choice);
+
             if (choice == 1)
             {
-                printf(chapter1_story_text[31]);
+                i = 13;
+                //printf("%s", chapter1StoryText[i]);
+                break;
             }
             else if (choice == 2)
             {
-                printf(chapter1_story_text[33]);
+                i = 14;
+                //printf("%s", chapter1StoryText[i]);
+                break;
             }
-            else if (choice == 2)
+            else if (choice == 3)
             {
-                printf(chapter1_story_text[33]);
+                i = 15;
+                //printf("%s", chapter1StoryText[i]);
+                break;
             }
         }
         else
         {
-            printf(chapter1_story_text[i]);
+            printf("%s", chapter1StoryText[i]);
 
             waitForInput();
 
