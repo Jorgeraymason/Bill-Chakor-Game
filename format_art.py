@@ -1,3 +1,5 @@
+#PYTHON SCRIPT USED FORMAT THE ASCII ART. It just adds "" around each line and a '\n' at the end.
+
 with open('art.txt') as f:
     lines = f.readlines()
 
