@@ -11,12 +11,13 @@
 #include "story.c"
 #include "ASCII.c"
 
+
 // Function prototype declarations
 int mainMenu();
 
 void gameOver();
 
-int makeChoice(int choice);
+int makeChoice();
 
 void introScene();
 
@@ -34,9 +35,9 @@ void chapter5HeartOfStone();
 // Main function, contains the main menu
 int main()
 {
-    mainMenu();
+  mainMenu();
 
-    return 0;
+  return 0;
 }
 
 // Prints the Main Menu. NOT THE SAME AS MAIN. 
@@ -74,8 +75,6 @@ void introScene(){
 // Function for the 1st chapter
 void chapter1ReptillainAuthority(){
     char input;
-
-    int choice;
     
     printf("%s\n", asciiNewt);
 
@@ -85,9 +84,9 @@ void chapter1ReptillainAuthority(){
 
     printf("What do you say to Newt?\n\n");
 
-    printf("1: Yeah right, arrogant man.\n2: I support you until the , Manson!\n3. Uh.....I'll pass\n4.Luko Goodkid is better\n");
+    printf("1: Yeah right, arrogant man.\n2: I support you until the , Manson!\n3.Luko Goodkid is better\n");
 
-    scanf(" %d", &choice);
+    int choice = makeChoice();
 
     if (choice == 1)
     {
@@ -111,15 +110,13 @@ void chapter1ReptillainAuthority(){
 
     printf("Newt: What? That girl trying to bomb the Lodge? No, my gaurds did that.\n");
 
-    //printf("\n");
-
     int count = 0; 
 
     while(count <= 2)  
     {
         printf("Is Newt Manson Lying?\n1. No, he's telling the truth\n2. Yes, something is off\n3. Newt Manson? Lying? NEVER!\n");
 
-        scanf(" %d\n", &choice);
+        int choice = makeChoice();
 
         if(choice == 1)
         {
@@ -141,7 +138,7 @@ void chapter1ReptillainAuthority(){
 
         if(count == 2)
         {
-            introScene();
+            gameOver();
             exit(0);
         }
     }
@@ -162,7 +159,7 @@ void chapter1ReptillainAuthority(){
     }
     else
     {
-        introScene();
+        gameOver();
     }
     
 }
@@ -177,6 +174,67 @@ void chapter2HighStakes(){
 
     printf("Ricchi: *puffs cigar* Eh? Is that you kiddo? I didn't know youse was gonna come out to see yer old Uncle Ricchi. Don't go thinkin' you're too good for me now. Tell me, how's Kris treatin' Pandora?\n");
 
+    printf("What do you say to Ricchi?\n\n");
+
+    printf("1: Yes Uncle Ricchi, everything is fine. How's the casino?\n2: I would always visit you, anytime! Say, we should play cards sometime at the casino.\n3. Save the nice guy act, I know you're a criminal. The rigged casino?\n");
+
+    int choice = makeChoice();
+
+    if (choice == 1)
+    {
+        printf("\nRicchi:It's going...great. Everthing is smooth as butta'\n");
+
+        printf("Bill: Inner Monolouge: Yeah....scamming people and fighting Kris...!\n");
+    }
+    else if (choice == 2)
+    {
+        printf("Ricchi: I'm glad you'se come out to see an old cat like me. to bad Kris don't come too....\n");
+
+        printf("Bill(Inner Monolouge): Yeah, because you always try to fight him!\n");
+    }
+    else {
+        printf("Ricchi: Yer treadin' on some deep water, kid. You'll get cut up round' these parts taking me head on.\n");
+
+        printf("Bill(Inner Monolouge):Nope! I don't want to get cut! I'm sorry! I'M SORRY!!!\n");
+    }
+    
+    printf("Bill: So uh.....you're saying the casino isn't rigged?\n");
+
+    printf("Ricchi: Course it ain't. I woudln't do that to ya. Yer my Newphew. Any other folks, I will.\n");
+
+    int count = 0; 
+
+    while(count <= 2)  
+    {
+        printf("Is Ricchi Ippatsu Lying about the casino?\n1. Yeah, the casino is running just fine\n2. No, something is off. It's rigged.\n3. He used to be bad, but he probably changed now\n");
+
+        int choice = makeChoice();
+
+        if(choice == 1)
+        {
+            printf("Incorrect. Try again.\n");
+            count++;
+        }
+        else if(choice == 2)
+        {
+            printf("Correct!\n");  
+
+            printf("Ricchi: Whatever, I'm gulity. I ain't scared of prision, I been before.\n");
+            break;
+        }
+        else if(choice == 3)
+        {
+            printf("Incorrect. Try again.\n");
+            count++;
+        }
+
+        if(count == 2)
+        {
+            gameOver();
+            exit(0);
+        }
+    }
+    
     printf("Go to next chapter? Y || N:\n");
 
     scanf(" %c", &input);
@@ -193,7 +251,7 @@ void chapter2HighStakes(){
     }
     else
     {
-        introScene();
+        gameOver();
     }
 }
 
@@ -223,7 +281,7 @@ void chapter3TechnicalDifficulties(){
     }
     else
     {
-        introScene();
+        gameOver();
     }
 }
 
@@ -253,7 +311,7 @@ void chapter4DivineSolance(){
     }
     else
     {
-        introScene();
+        gameOver();
     }
 }
 
@@ -283,7 +341,7 @@ void chapter5HeartOfStone(){
     }
     else
     {
-        introScene();
+        gameOver();
     }
 }
 
@@ -291,7 +349,10 @@ void gameOver(){
     printf("D O  B E T T E R  N E X T  T I M E");
 }
 
-int makeChoice(int choice){
+int makeChoice(){
+
+    int choice;
+
     printf("What do you choose?");
 
     scanf("%d", &choice);
