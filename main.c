@@ -7,10 +7,9 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-// Inclue addtional Files 
+// Inclue addtional Files
 #include "story.c"
 #include "ASCII.c"
-
 
 // Function prototype declarations
 int mainMenu();
@@ -18,6 +17,8 @@ int mainMenu();
 void gameOver();
 
 int makeChoice();
+
+void chapterSelect();
 
 void introScene();
 
@@ -29,53 +30,92 @@ void chapter3TechnicalDifficulties();
 
 void chapter4DivineSolance();
 
-void chapter5HeartOfStone();
-
+void chapter5DeFacto();
 
 // Main function, contains the main menu
 int main()
 {
-  mainMenu();
+    mainMenu();
 
-  return 0;
+    return 0;
 }
 
-// Prints the Main Menu. NOT THE SAME AS MAIN. 
-int mainMenu(){
+// Prints the Main Menu. NOT THE SAME AS MAIN.
+int mainMenu()
+{
 
     // Prints the logo of ASCII Bill
     printf("%s\n\n", asciiBill);
 
     // Main menu text
-    printf("|*************|\nBill Chakor\n|*************|\nStart Game[1]\n");
+    printf("|*************|\nBill Chakor\n|*************|\nStart Game[1]\n|*************|\nChapter Select[2]\n|*************|\n");
 
     // Input variable for user input
     int input;
-    
+
     scanf("%d", &input);
 
-   switch(input)
-   {
-   case 1:
-    chapter1ReptillainAuthority();
-    break;
-   default:
-    introScene();
-    break;
-   }
+    switch (input)
+    {
+    case 1:
+        introScene();
+        break;
+    case 2:
+        chapterSelect();
+        break;
+    case 3:
+        gameOver();
+    default:
+        printf("Select an valid input");
+        break;
+    }
 
     return input;
 }
 
-// For the intro Scene 
-void introScene(){
+void chapterSelect()
+{
+    printf("Select a chapter to start from:\nChapter 1 :Reptillian Authority\nChapter 2: High Stakes\nChapter 3: Technical Difficulties\nChapter 4: Divine Solace\nChapter 5: De Facto");
+
+    int input;
+
+    scanf("%d", &input);
+
+    switch (input)
+    {
+    case 1:
+        chapter1ReptillainAuthority();
+        break;
+    case 2:
+        chapter2HighStakes();
+        break;
+    case 3:
+        chapter3TechnicalDifficulties();
+        break;
+    case 4:
+        chapter4DivineSolance();
+        break;
+    case 5:
+        chapter5DeFacto();
+        break;
+    default:
+        break;
+    }
+}
+
+// For the intro Scene
+void introScene()
+{
     printf("In the beginning, Bill Chakor is hired by Tensen Law firm in Roxford.\nHe relocated to Roxford because of his newfound work.\nA taxi drops him off in front of the Roxford Hotel.\n");
+
+    chapter1ReptillainAuthority();
 }
 
 // Function for the 1st chapter
-void chapter1ReptillainAuthority(){
+void chapter1ReptillainAuthority()
+{
     char input;
-    
+
     printf("%s\n", asciiNewt);
 
     printf("You meet Newt Manson, the Supreme Zealot of the Roxford lodge\n\n");
@@ -100,58 +140,58 @@ void chapter1ReptillainAuthority(){
 
         printf("Bill(Inner Monolouge): Yeah! You're so great, Newt Manson! To be more like you! Minus the racist hate crimes\n\n");
     }
-    else {
+    else
+    {
         printf("Newt: Luko? Over me? That Creed fanatic is a lunatic! You're nuts.\n\n");
 
         printf("Bill(Inner Monolouge): Aren't YOU a creed member?! And besisdes didn't you shoot someone?\n\n");
     }
-    
+
     printf("Bill: Hey If I remember the news correctly, didn't you shoot someone?\n\n");
 
     printf("Newt: What? That girl trying to bomb the Lodge? No, my gaurds did that.\n\n");
 
-    int count = 0; 
+    int count = 0;
 
-    while(count <= 2)  
+    while (count <= 2)
     {
         printf("Is Newt Manson Lying?\n1. No, he's telling the truth\n2. Yes, something is off\n3. Newt Manson? Lying? NEVER!\n\n");
 
         int choice = makeChoice();
 
-        if(choice == 1)
+        if (choice == 1)
         {
             printf("Incorrect. Try again.\n");
             count++;
         }
-        else if(choice == 2)
+        else if (choice == 2)
         {
-            printf("Correct!\n");  
+            printf("Correct!\n");
 
             printf("Newt: Ugh, you win. Yeah it was me...\n");
             break;
         }
-        else if(choice == 3)
+        else if (choice == 3)
         {
             printf("Incorrect. Try again.\n");
             count++;
         }
 
-        if(count == 2)
+        if (count == 2)
         {
             gameOver();
-            exit(0);
         }
     }
-    
+
     printf("Go to next chapter? Y || N:\n");
 
     scanf(" %c", &input);
 
-    while(input != 'Y' && input != 'N' && input != 'y' &&  input != 'n')	
-	{
-		printf("That is not a legal choice\nPlease enter Y or N...\n");
-		scanf(" %c", &input);
-	}
+    while (input != 'Y' && input != 'N' && input != 'y' && input != 'n')
+    {
+        printf("That is not a legal choice\nPlease enter Y or N...\n");
+        scanf(" %c", &input);
+    }
 
     if (input == 'Y' || input == 'y')
     {
@@ -161,13 +201,13 @@ void chapter1ReptillainAuthority(){
     {
         gameOver();
     }
-    
 }
 
 // 2nd Chapter, involves Ricchi Ippatsu
-void chapter2HighStakes(){
+void chapter2HighStakes()
+{
     char input;
-    
+
     printf("%s\n", asciiRicchi);
 
     printf("You meet your slimy uncle: Ricchi Ippatsu, the proprietor of the 7 Spades Casino.\n\n");
@@ -192,59 +232,59 @@ void chapter2HighStakes(){
 
         printf("Bill(Inner Monolouge): Yeah, because you always try to fight him!\n\n");
     }
-    else {
+    else
+    {
         printf("Ricchi: Yer treadin' on some deep water, kid. You'll get cut up round' these parts taking me head on.\n\n");
 
         printf("Bill(Inner Monolouge):Nope! I don't want to get cut! I'm sorry! I'M SORRY!!!\n\n");
     }
-    
+
     printf("Bill: So uh.....you're saying the casino isn't rigged?\n\n");
 
     printf("Ricchi: Course it ain't. I woudln't do that to ya. Yer my Newphew. Any other folks, I will.\n\n");
 
-    int count = 0; 
+    int count = 0;
 
-    while(count <= 2)  
+    while (count <= 2)
     {
         printf("Is Ricchi Ippatsu Lying about the casino?\n1. Yeah, the casino is running just fine\n2. No, something is off. It's rigged.\n3. He used to be bad, but he probably changed now\n");
 
         int choice = makeChoice();
 
-        if(choice == 1)
+        if (choice == 1)
         {
             printf("Incorrect. Try again.\n");
             count++;
         }
-        else if(choice == 2)
+        else if (choice == 2)
         {
-            printf("Correct!\n");  
+            printf("Correct!\n");
 
             printf("Ricchi: Whatever, I'm gulity. I ain't scared of prision, I been before.\n");
             break;
         }
-        else if(choice == 3)
+        else if (choice == 3)
         {
             printf("Incorrect. Try again.\n");
             count++;
         }
 
-        if(count == 2)
+        if (count == 2)
         {
             gameOver();
-            exit(0);
         }
     }
-    
+
     printf("Go to next chapter? Y || N:\n");
 
     scanf(" %c", &input);
 
-    while(input != 'Y' && input != 'N' && input != 'y' &&  input != 'n')	
-	{
-		printf("That is not a legal choice\nPlease enter Y or N...\n");
-		scanf(" %c", &input);
-	}
-	
+    while (input != 'Y' && input != 'N' && input != 'y' && input != 'n')
+    {
+        printf("That is not a legal choice\nPlease enter Y or N...\n");
+        scanf(" %c", &input);
+    }
+
     if (input == 'Y' || input == 'y')
     {
         chapter3TechnicalDifficulties();
@@ -256,9 +296,10 @@ void chapter2HighStakes(){
 }
 
 // 3rd Chapter, about the aloof and roboic Takahashi.
-void chapter3TechnicalDifficulties(){
+void chapter3TechnicalDifficulties()
+{
     char input;
-    
+
     printf("%s\n", asciiTakahashi);
 
     printf("You meet the mysterious and robotic proprietor of Electronics GRAND, Takahashi. Formely Known as Tobi Komane after the TenSen incident.\n\n");
@@ -283,58 +324,58 @@ void chapter3TechnicalDifficulties(){
 
         printf("Bill(Inner Monolouge): Welp, it must be really uncomfortable sleeping with that thing on....\n\n");
     }
-    else {
+    else
+    {
         printf("\nTakahashi: Hmphhh.....How would you know that's me?\n\n");
 
         printf("Bill(Inner Monolouge):I don't know, maybe because of JASON! He has a file on you, and former TenSen records?\n\n");
     }
-    
+
     printf("Bill: Didn't your name make the news? I remember a guy with a name similar to yours was responsible for some IT incident at TenSen.\n\n");
 
     printf("Takahashi: Maybe. I will tell you if you can get the name right.\n\n");
 
-    int count = 0; 
+    int count = 0;
 
-    while(count <= 2)  
+    while (count <= 2)
     {
         printf("What is Takahashi's real name?\n1. Tobi Komane\n2. Terry Koyolae\n3. Terrance Newman\n\n");
 
         int choice = makeChoice();
 
-        if(choice == 1)
+        if (choice == 1)
         {
-            printf("Correct!\n\n");  
+            printf("Correct!\n\n");
 
             printf("Takahashi: Very Well. It is true, I, Tobi Komane am responsible for the TenSen incident.\n\n");
             break;
         }
-        else if(choice == 2)
+        else if (choice == 2)
         {
             printf("Incorrect. Try again.\n\n");
             count++;
         }
-        else if(choice == 3)
+        else if (choice == 3)
         {
             printf("Incorrect. Try again.\n\n");
             count++;
         }
 
-        if(count == 2)
+        if (count == 2)
         {
             gameOver();
-            exit(0);
         }
     }
-    
+
     printf("Go to next chapter? Y || N:\n");
 
     scanf(" %c", &input);
 
-        while(input != 'Y' && input != 'N' && input != 'y' &&  input != 'n')	
-	{
-		printf("That is not a legal choice\nPlease enter Y or N...\n");
-		scanf(" %c", &input);
-	}
+    while (input != 'Y' && input != 'N' && input != 'y' && input != 'n')
+    {
+        printf("That is not a legal choice\nPlease enter Y or N...\n");
+        scanf(" %c", &input);
+    }
 
     if (input == 'Y' || input == 'y')
     {
@@ -347,9 +388,10 @@ void chapter3TechnicalDifficulties(){
 }
 
 // 4th Chapter, the legendary and etheral Kora Gray.
-void chapter4DivineSolance(){
+void chapter4DivineSolance()
+{
     char input;
-    
+
     printf("%s\n", asciiKora);
 
     printf("You meet the naive and etheral, Kora Gray. She really likes you.\n");
@@ -364,8 +406,7 @@ void chapter4DivineSolance(){
 
     if (choice == 1)
     {
-        printf("\nKora: Yay! I am so please to be with you! Let us chow!\n*Kora proceeds to devour 4 whole Woks of beef stew*");
-
+        printf("\nKora: Yay! I am so pleased to be with you! Let us chow!\n*Kora proceeds to devour 4 whole Woks of beef stew*\n");
 
         printf("Bill(Inner Monolouge): CUZ....WHAT. THIS GIRL JUST ATE 4 WHOLE BOWL OF STEW\n");
     }
@@ -375,37 +416,38 @@ void chapter4DivineSolance(){
 
         printf("Bill(Inner Monolouge): Welp, it must be really uncomfortable sleeping with that thing on....\n");
     }
-    else {
+    else
+    {
         printf("\nKora: You can! If you just take on the ways on the Zonnism! You must first eat 12 bowls of Beef stew.\n");
 
         printf("Bill(Inner Monolouge):You mean to tell me my stomach has to explode before I can expirence divine peace? I'm good.\n");
     }
-    
+
     printf("Bill: How did Zoey ever meet a girl like you?\n");
 
     printf("Kora: She stuck up for me back in acadmey, back when I was being bullied by Chelsey DeMarco, when she took my robes while I was showering. Speaking of which, can you bathe me, Bill?\n");
 
-    int count = 0; 
+    int count = 0;
 
-    while(count <= 2)  
+    while (count <= 2)
     {
         printf("Should you bathe Kora?\n1. No! She's a grown woman!\n2. Only if I'm getting paid\n3. I mean....that's what friends are for, right?\n");
 
         int choice = makeChoice();
 
-        if(choice == 1)
+        if (choice == 1)
         {
             printf("Incorrect. Try again.\n");
             count++;
         }
-        else if(choice == 2)
+        else if (choice == 2)
         {
             printf("Incorrect. Try again.\n");
             count++;
         }
-        else if(choice == 3)
+        else if (choice == 3)
         {
-            printf("Correct!\n");  
+            printf("Correct!\n");
 
             printf("Kora: Thank you so much, Bill-San! I am delighted that you would do this for me!\n");
 
@@ -413,10 +455,9 @@ void chapter4DivineSolance(){
             break;
         }
 
-        if(count == 2)
+        if (count == 2)
         {
             gameOver();
-            exit(0);
         }
     }
 
@@ -424,15 +465,15 @@ void chapter4DivineSolance(){
 
     scanf(" %c", &input);
 
-    while(input != 'Y' && input != 'N' && input != 'y' &&  input != 'n')	
-	{
-		printf("That is not a legal choice\nPlease enter Y or N...\n");
-		scanf(" %c", &input);
-	}
+    while (input != 'Y' && input != 'N' && input != 'y' && input != 'n')
+    {
+        printf("That is not a legal choice\nPlease enter Y or N...\n");
+        scanf(" %c", &input);
+    }
 
     if (input == 'Y' || input == 'y')
     {
-       chapter5HeartOfStone();
+        chapter5DeFacto();
     }
     else
     {
@@ -440,10 +481,11 @@ void chapter4DivineSolance(){
     }
 }
 
-//5th Chapter, face the pious authoritian, Luko Goodkid
-void chapter5HeartOfStone(){
+// 5th Chapter, face the pious authoritian, Luko Goodkid
+void chapter5DeFacto()
+{
     char input;
-    
+
     printf("%s\n", asciiLuko);
 
     printf("You meet the Zealous and stone hearted, Luko Goodkid at the 1st Bridge of the Grand Lodge.\n\n");
@@ -460,7 +502,6 @@ void chapter5HeartOfStone(){
     {
         printf("\nLuko: It is Officer Goodkid, to you. I Luko Goodkid am the 2nd Chairman of the Grand Lodge, Director of ADX Juno, and Supreme Zealot of the Kingpin Lodge\n\n");
 
-
         printf("Bill(Inner Monolouge): Wow, how long did it take you to get all of those titles?\n\n");
     }
     else if (choice == 2)
@@ -469,37 +510,38 @@ void chapter5HeartOfStone(){
 
         printf("Bill(Inner Monolouge): Wait...NO! Jorges, Help!\n\n");
     }
-    else {
+    else
+    {
         printf("\nLuko: I am aware of that. Zealot Manson is incompetent and a liability to out ranks.\n\n");
 
         printf("Bill(Inner Monolouge): This is why you're 2nd Chairman of the Grand Lodge!\n\n");
     }
-    
+
     printf("Luko: Keep in mind, you are still are here without Creed authourization. Flee the premsis or you will be charged.\n\n");
 
     printf("Bill:Uhh...W H A T\n\n");
 
-    int count = 0; 
+    int count = 0;
 
-    while(count <= 2)  
+    while (count <= 2)
     {
         printf("Will you fight Luko?\n1. Yes. I can take him on.\n2. Only if I'm getting paid\n3. Nope! Jorges could though!\n\n");
 
         int choice = makeChoice();
 
-        if(choice == 1)
+        if (choice == 1)
         {
             printf("You got punched so hard, you feel over and stumbled.\n\n");
             count++;
         }
-        else if(choice == 2)
+        else if (choice == 2)
         {
             printf("You get hit so hard, you get paralyzed.\n\n");
             gameOver();
         }
-        else if(choice == 3)
+        else if (choice == 3)
         {
-            printf("You ran away, and just barely escaped creed premesis.\n\n");  
+            printf("You ran away, and just barely escaped creed premesis.\n\n");
 
             printf("Luko: The Elder will be please with this...Do not return to creed premesis unless PERMITTED.\n\n");
 
@@ -507,10 +549,9 @@ void chapter5HeartOfStone(){
             break;
         }
 
-        if(count == 2)
+        if (count == 2)
         {
             gameOver();
-            exit(0);
         }
     }
 
@@ -518,15 +559,15 @@ void chapter5HeartOfStone(){
 
     scanf(" %c", &input);
 
-    while(input != 'Y' && input != 'N' && input != 'y' &&  input != 'n')	
-	{
-		printf("That is not a legal choice\nPlease enter Y or N...\n");
-		scanf(" %c", &input);
-	}
+    while (input != 'Y' && input != 'N' && input != 'y' && input != 'n')
+    {
+        printf("That is not a legal choice\nPlease enter Y or N...\n");
+        scanf(" %c", &input);
+    }
 
     if (input == 'Y' || input == 'y')
     {
-       printf("The end for now!\n");
+        printf("The end for now!\n");
     }
     else
     {
@@ -534,17 +575,33 @@ void chapter5HeartOfStone(){
     }
 }
 
-void gameOver(){
-    printf("D O  B E T T E R  N E X T  T I M E");
+//Ends the game and prints game over
+void gameOver()
+{
+    printf("D O   B E T T E R   N E X T   T I M E\n");
+    exit(0);
 }
 
-int makeChoice(){
-
+// Gets the number the user picks and compares it to a dialouge option
+int makeChoice()
+{
     int choice;
 
     printf("What do you choose?\n");
 
     scanf("%d", &choice);
+
+    if (choice == 7)
+    {
+        mainMenu();
+    }
+    
+   /*
+   while (choice != 1 && choice != 2 && choice != 3 && choice != 4)
+    {
+        printf("Invalid input\n");
+    }*/
+    
 
     return choice;
 }
