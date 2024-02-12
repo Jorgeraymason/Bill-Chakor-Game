@@ -8,7 +8,6 @@
 #include <ctype.h>
 
 // Inclue addtional Files
-#include "story.c"
 #include "ASCII.c"
 
 // Function prototype declarations
