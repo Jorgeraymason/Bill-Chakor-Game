@@ -590,17 +590,5 @@ int makeChoice()
 
     scanf("%d", &choice);
 
-    if (choice == 7)
-    {
-        mainMenu();
-    }
-    
-   /*
-   while (choice != 1 && choice != 2 && choice != 3 && choice != 4)
-    {
-        printf("Invalid input\n");
-    }*/
-    
-
     return choice;
 }
